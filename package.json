@@ -25,5 +25,8 @@
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
-  "packageManager": "pnpm@8.6.3+sha1.30b2ad9776a393ccd1766239fd21e0c14a3c3acf"
+  "packageManager": "pnpm@8.6.3+sha1.30b2ad9776a393ccd1766239fd21e0c14a3c3acf",
+  "devDependencies": {
+    "orval": "^7.7.0"
+  }
 }
