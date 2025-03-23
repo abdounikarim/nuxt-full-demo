@@ -12,5 +12,10 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/ui',
     '@nuxt/content'
-  ]
+  ],
+  runtimeConfig: {
+    public: {
+      booksApiUrl: '',
+    }
+  }
 })
