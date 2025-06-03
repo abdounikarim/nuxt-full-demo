@@ -1,5 +1,5 @@
 <template>
-  <h1>Books Store</h1>
+  <h1>Bilemo</h1>
 </template>
 
 <script setup lang="ts">
