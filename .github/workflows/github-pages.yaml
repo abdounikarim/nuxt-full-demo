@@ -32,10 +32,8 @@ jobs:
         run: pnpm install
       - name: Run dev server in background
         run: pnpm dev --https --ssl-cert certs/nuxt-full-demo.crt.pem --ssl-key certs/nuxt-full-demo.key.pem &
-      - name: Install Cypress
-        run: pnpm cypress install
-      - name: Run tests
-        run: pnpm cypress run
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
 
   build:
     needs: tests
