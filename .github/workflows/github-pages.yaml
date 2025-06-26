@@ -20,13 +20,6 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      - name: Cache node_modules and Cypress binary
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-            /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install mkcert latest version and generate certificates
         run: |
           LATEST_VERSION=$(curl -s https://api.github.com/repos/FiloSottile/mkcert/releases/latest | jq -r '.tag_name')
@@ -35,6 +28,8 @@ jobs:
           ./mkcert -install
           mkdir -p certs
           ./mkcert -key-file certs/nuxt-full-demo.key.pem -cert-file certs/nuxt-full-demo.crt.pem localhost
+      - name: Configure pnpm to install Cypress in the binary cache after pnpm install
+        run: pnpm config set side-effects-cache false --location project
       - name: Install dependencies
         run: pnpm install
       - name: Run dev server in background
