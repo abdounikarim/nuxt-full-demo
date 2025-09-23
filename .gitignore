@@ -25,3 +25,6 @@ logs
 
 # mkcert
 /certs/
+
+/openapi.json
+/types
