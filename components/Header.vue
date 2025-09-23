@@ -1,5 +1,5 @@
 <template>
-  <h1>Bilemo</h1>
+  <h1>Books API</h1>
 </template>
 
 <script setup lang="ts">
