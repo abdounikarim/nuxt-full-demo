@@ -1,38 +1,30 @@
 <script setup lang="ts">
-import type { Phone } from "~/types/Phone";
+import type { BookJsonld } from "~/types/bookJsonld";
 const config = useRuntimeConfig()
-await useFetch(config.public.bilemoApiUrl + '/login_check', {
-  method: 'POST',
-  body: {
-    username: 'sfr',
-    password: 'pass'
-  },
-  onResponse({ response }) {
-    localStorage.setItem('token', response._data.token)
-  },
-})
 
-let phones: Phone[] = [];
-
-await useFetch<{'member': Phone[]}>(config.public.bilemoApiUrl + '/phones', {
+let books: BookJsonld[] = [];
+await useFetch<{'member': BookJsonld[]}>(config.public.bilemoApiUrl + '/books', {
   method: 'GET',
-  onRequest({ options }) {
-    options.headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-  },
   onResponse({ response }) {
-    phones = response._data.member;
+    books = response._data.member;
   },
 })
+
 </script>
 
 <template>
   <div>
     <Header />
-    <div v-if="phones.length > 0">
-      <h2>Phones</h2>
-      <div v-for="phone in phones" :key="phone.id">
-        <h3>{{ phone.name }}</h3>
-        <p>{{ phone.price }}€</p>
+    <div>
+      <div v-if="books.length > 0">
+        <h2>Books</h2>
+        <div v-for="book in books" :key="book.id">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.id }}</p>
+        </div>
+      </div>
+      <div v-else>
+        <p>No books for now...</p>
       </div>
     </div>
   </div>
