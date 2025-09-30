@@ -22,3 +22,9 @@ logs
 .env
 .env.*
 !.env.example
+
+# mkcert
+/certs/
+
+/openapi.json
+/types

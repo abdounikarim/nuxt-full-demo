@@ -1,7 +1,16 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  css: ['./assets/css/input.css'], // you'll have to create this file
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
 
   modules: [
     '@nuxt/eslint',
@@ -11,11 +20,10 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui',
-    '@nuxt/content'
   ],
   runtimeConfig: {
     public: {
-      booksApiUrl: '',
+      bilemoApiUrl: '',
     }
   }
 })

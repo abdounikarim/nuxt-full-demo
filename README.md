@@ -1,75 +1,84 @@
-# Nuxt Minimal Starter
+# Bilemo Frontend
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Stack
+------------
 
-## Setup
+- [mkcert][1]
+- [tailwind][2]
+- [pnpm][3]
+- [nuxt][4]
+- [typescript][5]
+- [cypress][6]
+- [orval][7]
 
-Make sure to install dependencies:
+Requirements
+------------
 
-```bash
-# npm
-npm install
+- [mkcert][1]
+- [pnpm][3]
 
-# pnpm
-pnpm install
+Installation
+------------
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Install mkcert certificates:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+mkcert -install
+mkdir -p certs
+mkcert -key-file certs/nuxt-full-demo.key.pem -cert-file certs/nuxt-full-demo.crt.pem localhost
 ```
 
-## Production
+Install JavaScript dependencies:
+
+```bash
+$ pnpm install
+```
+
+Usage
+------------
+
+Start the dev server:
+
+```bash
+$ pnpm dev --https --ssl-cert certs/nuxt-full-demo.crt.pem --ssl-key certs/nuxt-full-demo.key.pem &
+```
+
+By default, the web server runs on `[https://localhost:3000][8]`.
+
+Production
+------------
 
 Build the application for production:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+$ pnpm build
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+$ pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Tests
+------------
+
+Install Cypress:
+```bash
+$ pnpm cypress install
+```
+
+
+Execute this command to run tests:
+```bash
+$ pnpm cypress run
+```
+
+[1]: https://github.com/FiloSottile/mkcert
+[2]: https://tailwindcss.com/
+[3]: https://pnpm.io/installation
+[4]: https://nuxt.com/docs/getting-started/introduction
+[5]: https://www.typescriptlang.org/docs/
+[6]: https://docs.cypress.io/app/get-started/why-cypress
+[7]: https://orval.dev/
+[8]: https://localhost:3000
