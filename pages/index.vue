@@ -10,6 +10,8 @@ const { data, pending, error } = await useFetch<{'member': BookJsonld[], 'view':
     {
       // Key is used to force refresh
       key: () => `books-page-${currentPage.value}`,
+      // Disable server-side rendering
+      server: false,
     }
 )
 
